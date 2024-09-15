@@ -1,0 +1,210 @@
+/* Reset and base styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure the body takes the full height of the viewport */
+}
+
+svg {
+  fill: black !important;
+}
+
+/* Sidebar styles */
+.sidebar {
+  width: 250px;
+  background-color: #f9f9f9;
+  height: 100vh;
+  padding: 8px 10px 0px 20px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  transition: width 0.3s;
+  overflow: hidden;
+  z-index: 1000;
+}
+
+.toggle-btn {
+  position: absolute !important;
+  right: 20px !important;
+  padding: 10px;
+  cursor: pointer;
+  margin-left: auto;
+  border: none;
+  border-radius: .5em;
+  background: none;
+}
+
+.toggle-btn svg {
+  transition: transform 0.3s ease !important; /* Smooth transition for rotation */
+}
+
+.toggle-btn.rotated svg {
+  transform: rotate(180deg) !important; /* Rotate the icon 180 degrees */
+}
+
+.top__menu {
+  display: flex;
+}
+
+.logo {
+  text-align: left;
+  display: inline;
+  position: relative;
+  left: 0px;
+  transition: opacity 0.3s;
+}
+
+.logo.hidden {
+  opacity: 0;
+  height: 35px;
+  width: 0;
+}
+
+.nav-links {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+}
+
+.nav-links li {
+  margin: 15px 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.nav-links a:hover {
+  background-color: #e0e0e0;
+}
+
+.link-text {
+  margin-left: 10px;
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+.collapsed .link-text {
+  opacity: 0;
+  width: 0;
+}
+
+.sidebar.collapsed {
+  width: 80px;
+}
+
+/* Main content */
+main {
+  margin-left: 270px; /* Leaves space for the sidebar */
+  padding: 20px;
+  flex-grow: 1;
+  transition: margin-left 0.3s;
+  overflow: hidden; /* Prevents overflow from content affecting layout */
+}
+
+.sidebar.collapsed ~ main {
+  margin-left: 80px; /* Adjusts content when sidebar is collapsed */
+}
+
+/* Bottom navbar styles for small screens */
+.bottom-navbar {
+  display: none !important;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  border-top: 1px solid #ddd;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  justify-content: space-around;
+  padding: 10px 0;
+  z-index: 1000;
+}
+
+.bottom-navbar a {
+  text-decoration: none;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+}
+
+.bottom-navbar a:hover {
+  color: #ff0000;
+}
+
+.bottom-navbar i {
+  font-size: 18px;
+}
+
+.bottom-navbar .nav-text {
+  margin-top: 5px;
+}
+
+/* Media query for mobile view */
+@media (max-width: 800px) {
+  .sidebar {
+    display: none !important;
+  }
+
+  .bottom-navbar {
+    display: flex !important;
+  }
+
+  main {
+    margin-left: 0;
+    margin-bottom: 60px; /* Leaves space for the bottom navbar */
+  }
+
+  .more-items-bottom {
+    display: flex;
+    flex-direction: row;
+  }
+
+  main {
+    margin-bottom: 100px; /* Additional space when "More" items are visible */
+  }
+}
+
+/* Initially hide the extra items in the bottom navbar */
+.more-items-bottom {
+  display: none;
+  position: absolute;
+  bottom: 60px; /* Place the expanded list above the bottom navbar */
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  border-top: 1px solid #ddd;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  padding: 10px 0;
+  justify-content: space-around;
+  flex-direction: row;
+}
+
+.more-items-bottom a {
+  text-decoration: none;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+}
+
+.more-items-bottom a:hover {
+  color: #ff0000;
+}
