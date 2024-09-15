@@ -163,7 +163,9 @@ main {
   .sidebar {
     display: none !important;
   }
-
+  .sidebar~main {
+    margin-left: 0px;
+}
   .bottom-navbar {
     display: flex !important;
   }
