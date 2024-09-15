@@ -21,7 +21,7 @@ svg {
   width: 250px;
   background-color: #f9f9f9;
   height: 100vh;
-  padding: 8px 10px 0px 20px;
+  padding: 8px 10px 0px 10px;
   position: fixed;
   left: 0;
   top: 0;
@@ -103,13 +103,12 @@ svg {
 }
 
 .sidebar.collapsed {
-  width: 80px;
+  width: 70px;
 }
 
 /* Main content */
 main {
-  margin-left: 270px; /* Leaves space for the sidebar */
-  padding: 20px;
+  padding: 1rem;
   flex-grow: 1;
   transition: margin-left 0.3s;
   overflow: hidden; /* Prevents overflow from content affecting layout */
@@ -117,6 +116,10 @@ main {
 
 .sidebar.collapsed ~ main {
   margin-left: 80px; /* Adjusts content when sidebar is collapsed */
+}
+
+.sidebar~main{
+  margin-left: 240px;
 }
 
 /* Bottom navbar styles for small screens */
